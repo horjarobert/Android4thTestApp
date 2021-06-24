@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Fillus</string>
+
+    <string name="str_F">F</string>
+    <string name="str_i">i</string>
+    <string name="str_l_1">l</string>
+    <string name="str_l_2">l</string>
+    <string name="str_u">u</string>
+    <string name="str_s">s</string>
+
+    <string name="str_next">➳</string>
+    <string name="str_plus">+</string>
+</resources>
