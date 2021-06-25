@@ -3,9 +3,13 @@ package com.stufflex.fillus;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -18,12 +22,15 @@ public class MainActivity extends AppCompatActivity {
     // Declarations
     private TextView txt_F_white, txt_i_white, txt_l_1_white, txt_l_2_white, txt_u_white, txt_s_white,
                      txt_F_black, txt_i_black, txt_l_1_black, txt_l_2_black, txt_u_black, txt_s_black, txt_next, txt_plus;
-    private Animation anim_txt_next;
+    private Animation anim_txt_next, anim_txt_next_forward, anim_txt_plus;
 
-    private Animator scaleDown_F, scaleUp_F, scaleDown_i, scaleUp_i, scaleDown_l_1, scaleUp_l_1, scaleDown_l_2, scaleUp_l_2,
-            scaleDown_u, scaleUp_u, scaleDown_s, scaleUp_s, scaleDown_plus, scaleUp_plus;
+    private Animator scaleDown_F, scaleUp_F, scaleDown_i, scaleUp_i, scaleDown_l_1, scaleUp_l_1,scaleDown_l_2, scaleUp_l_2, scaleDown_u, scaleUp_u, scaleDown_s, scaleUp_s,
+            scaleDown_plus, scaleUp_plus;
     private AnimatorSet setDownAndUp_F, setDownAndUp_i, setDownAndUp_l_1, setDownAndUp_l_2,setDownAndUp_u, setDownAndUp_s, setDownAndUp_plus;
+
     private Button btn_next, btn_plus;
+
+    private Boolean isPlusClicked, isMinusClicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,69 +82,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Set animations
         anim_txt_next = AnimationUtils.loadAnimation(this, R.anim.txt_next);
+        anim_txt_next_forward = AnimationUtils.loadAnimation(this, R.anim.txt_next_forward);
+        anim_txt_plus = AnimationUtils.loadAnimation(this, R.anim.rotation);
 
-        // Special guest | Animation for txt_F_white
-        scaleDown_F = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
-        scaleDown_F.setTarget(txt_F_white);
-
-        scaleUp_F = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
-
-        setDownAndUp_F = new AnimatorSet();
-        setDownAndUp_F.playSequentially(scaleDown_F, scaleUp_F);
-
-        // Special guest | Animation for txt_i_white
-        scaleDown_i = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
-        scaleDown_i.setTarget(txt_i_white);
-
-        scaleUp_i = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
-
-        setDownAndUp_i = new AnimatorSet();
-        setDownAndUp_i.playSequentially(scaleDown_i, scaleUp_i);
-
-        // Special guest | Animation for txt_l_1_white
-        scaleDown_l_1 = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
-        scaleDown_l_1.setTarget(txt_l_1_white);
-
-        scaleUp_l_1 = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
-
-        setDownAndUp_l_1 = new AnimatorSet();
-        setDownAndUp_l_1.playSequentially(scaleDown_l_1, scaleUp_l_1);
-
-        // Special guest | Animation for txt_l_2_white
-        scaleDown_l_2 = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
-        scaleDown_l_2.setTarget(txt_l_2_white);
-
-        scaleUp_l_2 = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
-
-        setDownAndUp_l_2 = new AnimatorSet();
-        setDownAndUp_l_2.playSequentially(scaleDown_l_2, scaleUp_l_2);
-
-        // Special guest | Animation for txt_u_white
-        scaleDown_u = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
-        scaleDown_u.setTarget(txt_u_white);
-
-        scaleUp_u = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
-
-        setDownAndUp_u = new AnimatorSet();
-        setDownAndUp_u.playSequentially(scaleDown_u, scaleUp_u);
-
-        // Special guest | Animation for txt_s_white
-        scaleDown_s = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
-        scaleDown_s.setTarget(txt_s_white);
-
-        scaleUp_s = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
-
-        setDownAndUp_s = new AnimatorSet();
-        setDownAndUp_s.playSequentially(scaleDown_s, scaleUp_s);
-
-        // Special guest | Animation for txt_plus
-        scaleDown_plus = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
-        scaleDown_plus.setTarget(txt_plus);
-
-        scaleUp_plus = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
-
-        setDownAndUp_plus = new AnimatorSet();
-        setDownAndUp_plus.playSequentially(scaleDown_plus, scaleUp_plus);
+        SpecialAnimators();
 
         // Showing up...
         new Handler().postDelayed(new Runnable() {
@@ -238,4 +186,100 @@ public class MainActivity extends AppCompatActivity {
 
         hideNavigationBar();
     }
+
+    public void SpecialAnimators() {
+        // Special guest | Animation for txt_F_white
+        scaleDown_F = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
+        scaleDown_F.setTarget(txt_F_white);
+
+        scaleUp_F = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
+
+        setDownAndUp_F = new AnimatorSet();
+        setDownAndUp_F.playSequentially(scaleDown_F, scaleUp_F);
+
+        // Special guest | Animation for txt_i_white
+        scaleDown_i = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
+        scaleDown_i.setTarget(txt_i_white);
+
+        scaleUp_i = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
+
+        setDownAndUp_i = new AnimatorSet();
+        setDownAndUp_i.playSequentially(scaleDown_i, scaleUp_i);
+
+        // Special guest | Animation for txt_l_1_white
+        scaleDown_l_1 = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
+        scaleDown_l_1.setTarget(txt_l_1_white);
+
+        scaleUp_l_1 = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
+
+        setDownAndUp_l_1 = new AnimatorSet();
+        setDownAndUp_l_1.playSequentially(scaleDown_l_1, scaleUp_l_1);
+
+        // Special guest | Animation for txt_l_2_white
+        scaleDown_l_2 = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
+        scaleDown_l_2.setTarget(txt_l_2_white);
+
+        scaleUp_l_2 = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
+
+        setDownAndUp_l_2 = new AnimatorSet();
+        setDownAndUp_l_2.playSequentially(scaleDown_l_2, scaleUp_l_2);
+
+        // Special guest | Animation for txt_u_white
+        scaleDown_u = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
+        scaleDown_u.setTarget(txt_u_white);
+
+        scaleUp_u = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
+
+        setDownAndUp_u = new AnimatorSet();
+        setDownAndUp_u.playSequentially(scaleDown_u, scaleUp_u);
+
+        // Special guest | Animation for txt_s_white
+        scaleDown_s = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
+        scaleDown_s.setTarget(txt_s_white);
+
+        scaleUp_s = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
+
+        setDownAndUp_s = new AnimatorSet();
+        setDownAndUp_s.playSequentially(scaleDown_s, scaleUp_s);
+
+        // Special guest | Animation for txt_plus
+        scaleDown_plus = AnimatorInflater.loadAnimator(this, R.animator.scale_down);
+        scaleDown_plus.setTarget(txt_plus);
+
+        scaleUp_plus = AnimatorInflater.loadAnimator(this, R.animator.scale_up);
+
+        setDownAndUp_plus = new AnimatorSet();
+        setDownAndUp_plus.playSequentially(scaleDown_plus, scaleUp_plus);
+
+    }
+
+    public void GoToFinalActionActivity(View view){
+        Intent goToFinalActionActivity = new Intent(MainActivity.this, ActionActivity.class);
+
+        Pair[] pairs = new Pair[1];
+
+        pairs[0] = new Pair<View, String>(txt_next, "buttonNextActivity");
+
+        ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
+
+        startActivity(goToFinalActionActivity, activityOptions.toBundle());
+
+    }
+
+    public void GoToNextActivity(View view) {
+
+        txt_next.startAnimation(anim_txt_next_forward);
+
+        txt_plus.startAnimation(anim_txt_plus);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                GoToFinalActionActivity(view);
+
+            }
+        }, 500);
+    }
+
+
 }

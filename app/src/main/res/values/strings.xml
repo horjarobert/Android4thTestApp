@@ -10,4 +10,14 @@
 
     <string name="str_next">➳</string>
     <string name="str_plus">+</string>
+    <string name="str_minus">–</string>
+
+    <string name="str_menu_start">≡</string>
+    <string name="str_menu_close">×</string>
+
+    <string name="str_score">Score:</string>
+    <string name="str_time">Time</string>
+    <string name="str_value">0</string>
+
+
 </resources>
