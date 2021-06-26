@@ -15,9 +15,10 @@
     <string name="str_menu_start">≡</string>
     <string name="str_menu_close">×</string>
 
-    <string name="str_score">Score:</string>
+    <string name="str_score">Score</string>
     <string name="str_time">Time</string>
     <string name="str_value">0</string>
 
+    <string name="str_country">Country</string>
 
 </resources>

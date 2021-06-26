@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
 
         Pair[] pairs = new Pair[1];
 
-        pairs[0] = new Pair<View, String>(txt_next, "buttonNextActivity");
+        pairs[0] = new Pair<View, String>(btn_next, "buttonNextActivity");
 
         ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
 

@@ -72,6 +72,13 @@
       app:layout_constraintGuide_percent="0.9" />
 
   <android.support.constraint.Guideline
+      android:id="@+id/guideline_ht_95"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.95" />
+
+  <android.support.constraint.Guideline
       android:id="@+id/guideline_vt_05"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -208,7 +215,7 @@
   <!-- BEGIN header -->
   <Button
       android:id="@+id/btn_menu_start"
-      android:layout_width="50dp"
+      android:layout_width="70dp"
       android:layout_height="50dp"
       android:background="@drawable/btn_next"
       android:text="@string/str_menu_start"
@@ -216,9 +223,10 @@
       android:gravity="center"
       android:textColor="@color/black"
       android:textSize="30sp"
+      android:transitionName="buttonNextActivity"
       app:layout_constraintBottom_toTopOf="@+id/guideline_ht_1"
-      app:layout_constraintEnd_toStartOf="@+id/guideline_vt_95"
-      app:layout_constraintStart_toStartOf="@+id/guideline_vt_85"
+      app:layout_constraintEnd_toStartOf="@+id/guideline_vt_5"
+      app:layout_constraintStart_toStartOf="@+id/guideline_vt_5"
       app:layout_constraintTop_toTopOf="@+id/guideline_ht_1" />
 
   <TextView
@@ -231,8 +239,8 @@
       android:textColor="@color/black"
       android:textSize="15sp"
       app:layout_constraintBottom_toTopOf="@+id/guideline_ht_1"
-      app:layout_constraintEnd_toStartOf="@+id/guideline_vt_5"
-      app:layout_constraintStart_toStartOf="@+id/guideline_vt_5"
+      app:layout_constraintEnd_toStartOf="@+id/guideline_vt_95"
+      app:layout_constraintStart_toStartOf="@+id/guideline_vt_8"
       app:layout_constraintTop_toTopOf="parent" />
 
   <TextView
@@ -244,10 +252,10 @@
       android:textAlignment="center"
       android:textColor="@color/black"
       android:textSize="25sp"
-      android:transitionName="buttonNextActivity"
+      android:background="@drawable/txt_value"
       app:layout_constraintBottom_toTopOf="@+id/guideline_ht_1"
-      app:layout_constraintEnd_toStartOf="@+id/guideline_vt_5"
-      app:layout_constraintStart_toStartOf="@+id/guideline_vt_5"
+      app:layout_constraintEnd_toStartOf="@+id/guideline_vt_95"
+      app:layout_constraintStart_toStartOf="@+id/guideline_vt_8"
       app:layout_constraintTop_toTopOf="@+id/guideline_ht_1" />
 
   <TextView
@@ -260,9 +268,9 @@
       android:textColor="@color/black"
       android:textSize="15sp"
       app:layout_constraintBottom_toTopOf="@+id/guideline_ht_1"
-      app:layout_constraintEnd_toStartOf="@+id/guideline_vt_15"
+      app:layout_constraintEnd_toStartOf="@+id/guideline_vt_2"
       app:layout_constraintStart_toStartOf="@+id/guideline_vt_05"
-      app:layout_constraintTop_toTopOf="@+id/guideline_ht_1" />
+      app:layout_constraintTop_toTopOf="parent" />
 
   <TextView
       android:id="@+id/txt_score_value"
@@ -272,11 +280,141 @@
       android:text="@string/str_value"
       android:textAlignment="center"
       android:textColor="@color/black"
-      android:textSize="15sp"
+      android:textSize="25sp"
+      android:background="@drawable/txt_value"
       app:layout_constraintBottom_toTopOf="@+id/guideline_ht_1"
       app:layout_constraintEnd_toStartOf="@+id/guideline_vt_2"
-      app:layout_constraintStart_toStartOf="@+id/guideline_vt_2"
+      app:layout_constraintStart_toStartOf="@+id/guideline_vt_05"
       app:layout_constraintTop_toTopOf="@+id/guideline_ht_1" />
   <!-- END header -->
+
+  <!-- BEGIN flag panels -->
+  <TextView
+      android:id="@+id/txt_panel_1"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:background="@drawable/flag_panel_right"
+      android:translationZ="10dp"
+      app:layout_constraintBottom_toTopOf="@+id/guideline_ht_5"
+      app:layout_constraintEnd_toStartOf="@+id/guideline_vt_35"
+      app:layout_constraintStart_toStartOf="@+id/guideline_vt_05"
+      app:layout_constraintTop_toTopOf="@+id/guideline_ht_2" />
+
+  <TextView
+      android:id="@+id/txt_panel_2"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:background="@drawable/flag_panel_right"
+      android:translationZ="10dp"
+      app:layout_constraintBottom_toTopOf="@+id/guideline_ht_5"
+      app:layout_constraintEnd_toStartOf="@+id/guideline_vt_65"
+      app:layout_constraintStart_toStartOf="@+id/guideline_vt_35"
+      app:layout_constraintTop_toTopOf="@+id/guideline_ht_2" />
+
+  <TextView
+      android:id="@+id/txt_panel_3"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:background="@drawable/btn_next"
+      android:translationZ="10dp"
+      app:layout_constraintBottom_toTopOf="@+id/guideline_ht_5"
+      app:layout_constraintEnd_toStartOf="@+id/guideline_vt_95"
+      app:layout_constraintStart_toStartOf="@+id/guideline_vt_65"
+      app:layout_constraintTop_toTopOf="@+id/guideline_ht_2" />
+
+
+  <!-- END flag panels -->
+
+  <!-- BEGIN txt_country -->
+  <TextView
+      android:id="@+id/textView2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/str_country"
+      android:textAlignment="center"
+      android:gravity="center"
+      android:textSize="30sp"
+      android:textColor="@color/black"
+      app:layout_constraintBottom_toTopOf="@+id/guideline_ht_6"
+      app:layout_constraintEnd_toStartOf="@+id/guideline_vt_5"
+      app:layout_constraintStart_toStartOf="@+id/guideline_vt_5"
+      app:layout_constraintTop_toTopOf="@+id/guideline_ht_6" />
+
+
+  <!-- END txt_country -->
+
+  <!-- BEGIN scrollLayout -->
+  <HorizontalScrollView
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toTopOf="@+id/guideline_ht_95"
+      app:layout_constraintEnd_toStartOf="@+id/guideline_vt_95"
+      app:layout_constraintStart_toStartOf="@+id/guideline_vt_05"
+      app:layout_constraintTop_toTopOf="@+id/guideline_ht_7">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="2"
+        >
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          >
+        <TextView
+            android:id="@+id/textView111231"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_country"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_ht_6"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vt_5"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vt_5"
+            app:layout_constraintTop_toTopOf="@+id/guideline_ht_6" />
+
+        <TextView
+            android:id="@+id/textView1111"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_country"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_ht_6"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vt_5"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vt_5"
+            app:layout_constraintTop_toTopOf="@+id/guideline_ht_6" />
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          >
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_country"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_ht_6"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vt_5"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vt_5"
+            app:layout_constraintTop_toTopOf="@+id/guideline_ht_6" />
+      </LinearLayout>
+
+    </LinearLayout>
+  </HorizontalScrollView>
+  <!-- END scrollLayout -->
 
   </android.support.constraint.ConstraintLayout>

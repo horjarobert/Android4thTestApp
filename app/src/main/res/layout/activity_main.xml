@@ -394,6 +394,7 @@
         android:background="@drawable/btn_next"
         android:translationZ="5dp"
         android:onClick="GoToNextActivity"
+        android:transitionName="buttonNextActivity"
         app:layout_constraintBottom_toTopOf="@+id/guideline_ht_8"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vt_5"
         app:layout_constraintStart_toStartOf="@+id/guideline_vt_5"
